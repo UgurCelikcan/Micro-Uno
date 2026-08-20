@@ -1,27 +1,26 @@
 # Micro-Uno
 
-A robust, portable, and feature-rich development board that combines the flexibility and compact form factor of the Pro Micro (ATmega32U4) with advanced power management, wireless connectivity, and extensive data storage capabilities.
+A powerful, custom dual-microcontroller development board that combines the USB connectivity and compact form factor of the Pro Micro (`ATmega32U4`) with the classic pinout and versatility of the Arduino Uno (`ATmega328P`).
 
 ---
 
 ## 🚀 Key Features
 
-* **Core Processing:** ATmega32U4 microcontroller (Pro Micro architecture) with native USB support and hardware serial communication.
-* **Wireless Connectivity:** Integrated ESP32-S2-WROVER module providing robust Wi-Fi and advanced networking capabilities.
-* **Advanced Power Management:**
-  * USB Type-C interface for power and programming.
-  * TP4056-based Li-Po battery charging circuit with status indicators.
-  * MT3608 step-up (boost) DC-DC converter delivering a stable 5V output from a 3.7V battery cell.
-  * AMS1117-3.3 LDO voltage regulator for dedicated, low-noise 3.3V peripheral rails.
-* **Mass Storage:**
-  * W25Q128 (128Mbit / 16MiB) SPI Flash memory for logging and data storage.
-  * MicroSD card slot operating via the shared SPI bus with dedicated Chip Select (CS) management.
+* **Dual Microcontroller Architecture:**
+  * **Core 1:** ATmega32U4 (`U1`) with native USB Type-C support, hardware serial, and HID capabilities.
+  * **Core 2:** ATmega32P (`U2`) running with an external 16MHz crystal oscillator, providing classic Uno-compatible GPIO and analog channels.
+* **Power & USB Interface:**
+  * USB Type-C receptacle (`J1`) with CC1/CC2 pull-down resistors and a resettable PTC polyfuse (`F1`).
+  * Comprehensive decoupling capacitance (`C1`-`C12`) ensuring stable power rails and clean clock signals.
+* **Expansion & Connectivity:**
+  * Dedicated ICSP headers (`J2`, `J3`) for direct programming of both microcontrollers.
+  * Multi-pin breakout headers (`J4`, `J5`, `J6`) exposing full Port expansions (`PORTC`, `PORTD`, `PORTF`) for rapid prototyping.
 
 ---
 
 ## 📊 Schematic Overview
 
-The schematic is modularly designed, separating power generation, main processing units, memory interfaces, and wireless communication blocks to ensure signal integrity and ease of manufacturing.
+The schematic integrates both processor cores alongside robust power filtering and extensive pin breakout headers on a single A4 sheet.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/984720e9-923e-4a0a-a719-bb8979c5a001" alt="Schematic Page" width="800"/>
@@ -31,7 +30,7 @@ The schematic is modularly designed, separating power generation, main processin
 
 ## 🛠️ PCB Design & Routing
 
-The layout has been meticulously routed to minimize trace lengths on critical high-speed and power lines, utilizing proper decoupling capacitors (0.1µF and 10µF) near all IC power pins.
+The PCB layout cleanly routes the dense dual-processor traces, keeping crystal oscillators close to their respective chips and managing power planes efficiently.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9bfee50c-97f0-4596-9ddc-b2063e9f2433" alt="PCB Layout" width="800"/>
